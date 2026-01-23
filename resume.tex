@@ -1,0 +1,215 @@
+\documentclass[10pt, a4aper]{article}
+
+% Packages:
+\usepackage[
+    ignoreheadfoot, % set margins without considering header and footer
+    top=0.5 in, % separation between body and page edge from the top
+    bottom=0.5 in, % separation between body and page edge from the bottom
+    left=0.5 in, % separation between body and page edge from the left
+    right=0.5 in, % separation between body and page edge from the right
+    footskip=0 cm, % separation between body and footer
+]{geometry} % for adjusting page geometry
+\usepackage{titlesec} % for customizing section titles
+\usepackage{tabularx} % for making tables with fixed width columns
+\usepackage{array} % tabularx requires this
+\usepackage[dvipsnames]{xcolor} % for coloring text
+\definecolor{primaryColor}{RGB}{0, 0, 0} % define primary color
+\usepackage{enumitem} % for customizing lists
+\usepackage{fontawesome5} % for using icons
+\usepackage{amsmath} % for math
+\usepackage[
+    pdftitle={Ramachandran Kulothungan's CV},
+    pdfauthor={Ramachandran Kulothungan},
+    pdfcreator={LaTeX},
+    colorlinks=true,
+    urlcolor=primaryColor
+]{hyperref} % for links, metadata and bookmarks
+\usepackage{calc} % for calculating lengths
+\usepackage{changepage} % for one column entries (adjustwidth environment)
+\usepackage{paracol} % for two and three column entries
+\usepackage{ifthen} % for conditional statements
+\usepackage{needspace} % for avoiding page breaks right after the section title
+
+% Ensure that generate pdf is machine-readable:
+\setlength{\parindent}{0pt} % no indentation
+\setlength{\topskip}{0pt} % no top skip
+\setlength{\columnsep}{0.15cm} % set column separation
+\pagenumbering{gobble} % no page numbering
+
+\titleformat{\section}{\bfseries\large}{}{0pt}{}[\vspace{2pt}\titlerule]
+
+\titlespacing{\section}{
+    % left space:
+    0pt
+}{
+    % top space:
+    0.1 cm
+}{
+    % bottom space:
+    0.1 cm
+} % section title spacing
+
+\newenvironment{twocolentry}[2]{
+  \begin{minipage}[t]{0.7\textwidth}
+    \raggedright
+    #1
+  \end{minipage}
+  \hfill
+  \begin{minipage}[t]{0.3\textwidth}
+    \raggedleft
+    #2
+  \end{minipage}%
+
+}
+
+\newenvironment{skillcolentry}[2]{
+  \begin{minipage}[t]{0.5\textwidth}
+    #1
+  \end{minipage}
+  \hfill
+  \begin{minipage}[t]{0.5\textwidth}
+    #2
+  \end{minipage}%
+
+}
+
+\newenvironment{threecolentry}[3]{
+  \begin{minipage}[t]{0.4\textwidth}
+    \raggedright
+    #1
+  \end{minipage}%
+  \hfill
+  \begin{minipage}[t]{0.3\textwidth}
+    \centering
+    #2
+  \end{minipage}%
+  \hfill
+  \begin{minipage}[t]{0.3\textwidth}
+    \raggedleft
+    #3
+  \end{minipage}%
+
+}
+
+\newenvironment{onecolentry}{
+    \begin{minipage}[t]{1\textwidth}
+        \raggedright
+}{
+    \end{minipage}
+
+}
+
+\newcommand{\name}[1]{\begin{center}{\LARGE \textbf{#1}}\end{center}}
+\newcommand{\contact}[2]{\begin{center}#1\end{center}}
+
+\begin{document}
+
+% Place name and contact info:
+\name{RAMACHANDRAN KULOTHUNGAN}
+\contact{Buffalo, NY • (716) 9947155 • \href{mailto:ramachandran.kulothungan@gmail.com}{Email} •  \href{https://www.linkedin.com/in/ramachandran-kulothungan}{LinkedIn} •  \href{https://github.com/RamachandranKulothungan}{Portfolio} • Open to relocate}
+
+\section{WORK EXPERIENCE}
+\begin{threecolentry}{\textbf{Software Dev Cloud Intern}}
+	{\textbf{Nokia Bell Labs, Chicago}}
+    {June 2025–Present}
+\end{threecolentry}
+\begin{itemize}[itemsep=0pt, topsep=0pt]
+ \item Built cloud-native lifecycle automation for Nokia CMM across Kubernetes environments (NCS, OpenShift) using NCOM, enabling reliable deployment, scaling, and upgrade workflows.
+ \item  Developed an extensible Python library exposing 30+ standardized API and logging abstractions, enabling programmatic integration across automation and orchestration workflows using Jenkins.
+\item Automated CMM re-installation workflows for T-Mobile (TMO) using Python and NCOM+ tooling, to reduce manual re-installation time from ~9 hours.
+\end{itemize}
+
+\begin{threecolentry}{\textbf{Software Development Engineer}}
+	{\textbf{Dassault Systemes}}
+    {August 2020–August 2024}
+\end{threecolentry}
+
+\begin{itemize}[itemsep=0pt, topsep=0pt]
+ \item Built a scalable Python-based internal automation framework adopted by 40+ teams to orchestrate UI and API-driven workflows and CI/CD execution using goCD and Github Actions, significantly reducing manual operational effort.
+ \item Led a platform decentralization initiative by modularizing shared libraries, defining versioned packaging patterns, and automating artifact publishing to Artifactory using GitHub Actions, enabling team-owned repositories and independent releases.
+ \item Worked on cloud infrastructure migration and optimization on AWS, designing reusable Terraform modules and rightsizing EC2 resources to achieve ~60\% cost reduction and faster environment provisioning.
+  \item Engineered and deployed an internal developer productivity tool (Django, AWS, Kubernetes) to index and search library keywords across 10+ repositories, improving discoverability and onboarding efficiency.
+\item Implemented centralized observability and analytics using structured logging and Sumo Logic dashboards to provide real-time visibility into test pipeline health for 30+ teams.
+\item Led data validation for a production AWS DMS migration (MySQL → PostgreSQL) by building automated Ruby/SQL integrity checks, ensuring data correctness and reducing manual validation effort by ~90\%.
+ \item Recognized with 2 company awards for engineering contributions that reduced system execution time by ~50\% and improved reliability and scalability across organization-wide platforms.
+ 
+% \item Cut test pipeline debugging time by 40\% by automating failure diagnostics with a custom GHA workflow that stored reports in AWS S3 and displayed summaries within the workflow.
+% \item Cut the size of Robot Framework UI test logs by 85\% by building a custom listener that captured screenshots smartly for new navigations.
+ % \item Delivered 70+ UI and API automated tests using RF within 3 months, achieving full regression test coverage.
+
+\end{itemize}
+
+
+\section{PROJECTS}
+
+\textbf{Agentic Job Application Drafter} $|$ LangChain, Browser Use (YC W25), OpenRouter, FastAPI, Next.js
+\begin{itemize}[itemsep=0pt, topsep=0pt]
+\item Polls RSS feeds for job links and executes a LangChain workflow per job link using Browser Use Agent to extract form XPaths, attaching field values using LLMs, and auto-fill applications through a browser extension.
+\end{itemize}
+
+\textbf{Agentic Trip Planner} $|$ Langgraph , OpenRouter, Streamlit
+\begin{itemize}[itemsep=0pt, topsep=0pt]
+\item Created an agentic AI vacation planner using LangGraph and Grok LLMs, integrating Google Maps APIs, currency conversion, and calculation tools to automate personalized itineraries and cut planning time
+\end{itemize}
+
+\textbf{EmailWhiz - Bulk Cold Emailer} $|$ Django, React, Tailwind CSS, MongoDB, GCP
+\begin{itemize}[itemsep=0pt, topsep=0pt]
+\item A Django based Web Application, enables users to send 100+ personalized cold emails and follow-ups directly without Gmail redirection.
+\end{itemize}
+
+%\textbf{Summarization using LLMs} $|$ Transformers, Pandas, Numpy
+%\begin{itemize}[itemsep=0pt, topsep=0pt]
+%\tem Created a text summarization model by fine-tuning the 'facebook/bart-base' LLM on the Billsum dataset, achieving a ROUGE-L score of 0.338 and a BERTScore of 0.878.
+%\end{itemize}
+
+%\textbf{Transformer for News Classification} $|$ Pytorch, NLTK, Pandas, Numpy
+%\begin{itemize}[itemsep=0pt, topsep=0pt]
+%\item Constructed a Transformer model from scratch for news classification on the AG's news dataset, attaining an F1-score of 0.91.
+%\end{itemize}
+
+
+\textbf{Anime Recommendation Engine} $|$ ScikitLearn, Pandas, Streamlit
+\begin{itemize}[itemsep=0pt, topsep=0pt]
+\item Leveraged a dataset of over 700K users and 5M ratings to build a robust anime recommendation system, implementing and evaluating three models, including KNN and matrix factorization, to provide personalized recommendations.
+\end{itemize}
+
+\section{SKILLS}
+\begin{skillcolentry}{\textbf{Programming:} Python, JavaScript, C, Java}
+    {\textbf{Frameworks:} FastAPI, Next.js, Django, React}
+\end{skillcolentry}
+\begin{skillcolentry}{\textbf{Cloud \& DevOps:} AWS, Docker, Kubernetes, Terraform, GitHub Actions}
+    {\textbf{Databases:} PostgreSQL, MySQL, MongoDB}
+\end{skillcolentry}
+\begin{skillcolentry}{ }
+    {\textbf{ Domains:} Web Development, DevOps}
+\end{skillcolentry}
+\vspace{4pt}
+
+
+\section{EDUCATION}
+
+\begin{twocolentry}{\textbf{University at Buffalo}}
+   {Buffalo, NY, USA}
+\end{twocolentry}
+\begin{twocolentry}{ Master of Science in Computer Science}
+   {August 2024 - December 2025}
+\end{twocolentry}
+\begin{itemize}[itemsep=0pt, topsep=0pt]
+    \item Relevant Coursework: Algorithms, Computer Security, Computer Vision, Deep Learning, Operating Systems
+\end{itemize}
+
+\vspace{0.1 cm}
+
+\begin{twocolentry}{\textbf{Malaviya National Institute of Technology}}
+	{Jaipur, India}
+\end{twocolentry}
+\begin{twocolentry}{Bachelor of Technology}
+	{July 2016-June 2020}
+\end{twocolentry}
+
+
+%\section{ACHIEVEMENTS}
+%\begin{itemize}[itemsep=0pt, topsep=0pt]
+ %\item Achieved 1st place among 50+ teams at UB AI Hackathon by developing an AI-powered insurance recommendation app for Lighthouse Clinic using Next.js, FastAPI, and OpenAI models.
+%\end{itemize}
+\end{document}

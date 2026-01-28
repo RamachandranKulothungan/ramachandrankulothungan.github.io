@@ -151,55 +151,177 @@
             </div>
         </div>
 
-        <!-- Skills Section -->
-        <div>
+        <div class="mb-12">
             <h2 class="text-3xl font-bold mb-8 dark:text-white flex items-center gap-3">
                 <span class="w-2 h-8 bg-purple-500 rounded-full inline-block"></span>
                 Core Skills
             </h2>
-            <div class="grid grid-cols-2 md:grid-cols-5 gap-4">
-                <div class="bg-white dark:bg-gray-800 rounded-2xl p-6 border border-gray-100 dark:border-gray-700 shadow-sm hover:shadow-xl transition-all hover:-translate-y-1 duration-300 text-center">
-                    <img src="static/logos/python.png" alt="Python" class="w-12 h-12 mx-auto mb-3">
-                    <p class="font-bold text-gray-800 dark:text-gray-200">Python</p>
-                </div>
-                <!-- ... -->
-                <div class="bg-white dark:bg-gray-800 rounded-2xl p-6 border border-gray-100 dark:border-gray-700 shadow-sm hover:shadow-xl transition-all hover:-translate-y-1 duration-300 text-center">
-                    <img src="static/logos/ts.png" alt="TypeScript" class="w-12 h-12 mx-auto mb-3">
-                    <p class="font-bold text-gray-800 dark:text-gray-200">TypeScript</p>
-                </div>
-                <div class="bg-white dark:bg-gray-800 rounded-2xl p-6 border border-gray-100 dark:border-gray-700 shadow-sm hover:shadow-xl transition-all hover:-translate-y-1 duration-300 text-center">
-                    <img src="static/logos/fastapi.png" alt="FastAPI" class="w-12 h-12 mx-auto mb-3">
-                    <p class="font-bold text-gray-800 dark:text-gray-200">FastAPI</p>
-                </div>
-                <div class="bg-white dark:bg-gray-800 rounded-2xl p-6 border border-gray-100 dark:border-gray-700 shadow-sm hover:shadow-xl transition-all hover:-translate-y-1 duration-300 text-center">
-                    <img src="static/logos/nextjs.png" alt="Next.js" class="w-12 h-12 mx-auto mb-3">
-                    <p class="font-bold text-gray-800 dark:text-gray-200">Next.js</p>
-                </div>
-                <div class="bg-white dark:bg-gray-800 rounded-2xl p-6 border border-gray-100 dark:border-gray-700 shadow-sm hover:shadow-xl transition-all hover:-translate-y-1 duration-300 text-center">
-                    <img src="static/logos/docker.png" alt="Docker" class="w-12 h-12 mx-auto mb-3">
-                    <p class="font-bold text-gray-800 dark:text-gray-200">Docker</p>
-                </div>
-                <div class="bg-white dark:bg-gray-800 rounded-2xl p-6 border border-gray-100 dark:border-gray-700 shadow-sm hover:shadow-xl transition-all hover:-translate-y-1 duration-300 text-center">
-                    <img src="static/logos/k8s.png" alt="Kubernetes" class="w-12 h-12 mx-auto mb-3">
-                    <p class="font-bold text-gray-800 dark:text-gray-200">Kubernetes</p>
-                </div>
-                <div class="bg-white dark:bg-gray-800 rounded-2xl p-6 border border-gray-100 dark:border-gray-700 shadow-sm hover:shadow-xl transition-all hover:-translate-y-1 duration-300 text-center">
-                    <img src="static/logos/pytorch.png" alt="PyTorch" class="w-12 h-12 mx-auto mb-3">
-                    <p class="font-bold text-gray-800 dark:text-gray-200">PyTorch</p>
-                </div>
-                <div class="bg-white dark:bg-gray-800 rounded-2xl p-6 border border-gray-100 dark:border-gray-700 shadow-sm hover:shadow-xl transition-all hover:-translate-y-1 duration-300 text-center">
-                    <img src="static/logos/sklearn.png" alt="Scikit-learn" class="w-12 h-12 mx-auto mb-3">
-                    <p class="font-bold text-gray-800 dark:text-gray-200">Scikit-learn</p>
-                </div>
-                <div class="bg-white dark:bg-gray-800 rounded-2xl p-6 border border-gray-100 dark:border-gray-700 shadow-sm hover:shadow-xl transition-all hover:-translate-y-1 duration-300 text-center">
-                    <img src="static/logos/tf.png" alt="Terraform" class="w-12 h-12 mx-auto mb-3">
-                    <p class="font-bold text-gray-800 dark:text-gray-200">Terraform</p>
-                </div>
-                <div class="bg-white dark:bg-gray-800 rounded-2xl p-6 border border-gray-100 dark:border-gray-700 shadow-sm hover:shadow-xl transition-all hover:-translate-y-1 duration-300 text-center">
-                    <img src="static/logos/gha.png" alt="GitHub Actions" class="w-12 h-12 mx-auto mb-3">
-                    <p class="font-bold text-gray-800 dark:text-gray-200">GitHub Actions</p>
-                </div>
-            </div>
+            
+            <div id="skills-canvas-container" class="w-full h-[250px] relative overflow-hidden rounded-2xl bg-gray-50 dark:bg-gray-800/50"></div>
+            
+            <!-- Three.js Setup -->
+            <script type="importmap">
+              {
+                "imports": {
+                  "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js"
+                }
+              }
+            </script>
+            <script type="module">
+                import * as THREE from 'three';
+
+                const container = document.getElementById('skills-canvas-container');
+                
+                // Scene Setup
+                const scene = new THREE.Scene();
+                // Add some subtle fog for depth fading
+                scene.fog = new THREE.Fog(0x000000, 10, 25); // Color will be updated based on theme
+
+                const camera = new THREE.PerspectiveCamera(75, container.clientWidth / container.clientHeight, 0.1, 1000);
+                camera.position.z = 6; // Moved closer to make logos larger (was 8)
+
+                const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+                renderer.setSize(container.clientWidth, container.clientHeight);
+                renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+                container.appendChild(renderer.domElement);
+
+                // Lighting
+                const ambientLight = new THREE.AmbientLight(0xffffff, 3); // Slightly brighter
+                scene.add(ambientLight);
+                
+                const directionalLight = new THREE.DirectionalLight(0xffffff, 1.5);
+                directionalLight.position.set(5, 5, 5);
+                scene.add(directionalLight);
+
+                // Skills Data
+                const skills = [
+                    { name: 'Python', url: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg' },
+                    { name: 'TypeScript', url: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg' },
+                    { name: 'FastAPI', url: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/fastapi/fastapi-original.svg' },
+                    { name: 'Next.js', url: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg' },
+                    { name: 'Docker', url: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg' },
+                    { name: 'Kubernetes', url: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kubernetes/kubernetes-plain.svg' },
+                    { name: 'PyTorch', url: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pytorch/pytorch-original.svg' },
+                    { name: 'Scikit-Learn', url: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/scikitlearn/scikitlearn-original.svg' },
+                    { name: 'Terraform', url: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/terraform/terraform-original.svg' },
+                    { name: 'GitHub Actions', url: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg' },
+                    { name: 'React', url: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg' },
+                    { name: 'AWS', url: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original-wordmark.svg' },
+                    { name: 'PostgreSQL', url: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg' },
+                    { name: 'Git', url: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg' }
+                ];
+
+                const logoGroup = new THREE.Group();
+                scene.add(logoGroup);
+
+                const textureLoader = new THREE.TextureLoader();
+                const planes = [];
+                // Increased spacing and scale
+                const SPACING = 5; 
+                const SCALE = 3;
+
+                // Create Meshes
+                skills.forEach((skill, index) => {
+                    textureLoader.load(skill.url, (texture) => {
+                        texture.minFilter = THREE.LinearFilter;
+                        texture.magFilter = THREE.LinearFilter;
+                        texture.colorSpace = THREE.SRGBColorSpace;
+
+                        // Larger planes
+                        const geometry = new THREE.PlaneGeometry(SCALE, SCALE);
+                        const material = new THREE.MeshBasicMaterial({ 
+                            map: texture, 
+                            transparent: true,
+                            side: THREE.DoubleSide
+                        });
+                        
+                        const mesh = new THREE.Mesh(geometry, material);
+                        mesh.position.x = index * SPACING;
+                        
+                        mesh.userData = {
+                            initialY: 0,
+                            floatSpeed: 0.001 + Math.random() * 0.001, // Slower float
+                            floatOffset: Math.random() * Math.PI * 2
+                        };
+
+                        logoGroup.add(mesh);
+                        planes.push(mesh);
+                    });
+                });
+
+                // Center logic: Move group slightly left so first item isn't dead center
+                logoGroup.position.x = -5;
+
+                // Animation
+                let speed = 0.025; // Slightly faster default
+                let hoverSpeed = 0.005;
+                let currentSpeed = speed;
+
+                let mouseX = 0;
+                let targetRotationY = 0;
+                
+                container.addEventListener('mousemove', (e) => {
+                    currentSpeed = hoverSpeed;
+                    const rect = container.getBoundingClientRect();
+                    mouseX = ((e.clientX - rect.left) / rect.width) * 2 - 1;
+                    targetRotationY = mouseX * 0.3; 
+                });
+                
+                container.addEventListener('mouseleave', () => {
+                    currentSpeed = speed;
+                    targetRotationY = 0;
+                    mouseX = 0;
+                });
+
+                function animate() {
+                    requestAnimationFrame(animate);
+
+                    planes.forEach(plane => {
+                        plane.position.x -= currentSpeed;
+                        
+                        // Infinite Loop Logic
+                        // With Z=6, view width is approx 10. 
+                        // If x < -10, it's definitely off screen left.
+                        if (plane.position.x < -15) { 
+                             let maxX = -Infinity;
+                             planes.forEach(p => maxX = Math.max(maxX, p.position.x));
+                             plane.position.x = maxX + SPACING;
+                        }
+
+                        // Floating effect
+                        plane.position.y = Math.sin(Date.now() * plane.userData.floatSpeed + plane.userData.floatOffset) * 0.15;
+                        plane.rotation.y += (targetRotationY - plane.rotation.y) * 0.05;
+                    });
+
+                    renderer.render(scene, camera);
+                }
+
+                animate();
+
+                // Responsive
+                window.addEventListener('resize', () => {
+                    if (!container) return;
+                    const width = container.clientWidth;
+                    const height = container.clientHeight;
+                    camera.aspect = width / height;
+                    camera.updateProjectionMatrix();
+                    renderer.setSize(width, height);
+                });
+
+                // Dark mode adaptation for fog
+                function updateTheme() {
+                     const isDark = document.documentElement.classList.contains('dark');
+                     // Fog color matches background
+                     // light: gray-50 (#f9fafb) -> 0xf9fafb
+                     // dark: gray-800 (#1f2937) but with opacity.. let's roughly match
+                     scene.fog.color.setHex(isDark ? 0x1f2937 : 0xf9fafb);
+                }
+                
+                // Watch for class changes
+                const observer = new MutationObserver(updateTheme);
+                observer.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });
+                updateTheme(); // Init
+            </script>
         </div>
     </div>
 

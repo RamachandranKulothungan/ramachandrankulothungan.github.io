@@ -2,13 +2,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ramachandran Kulothungan | Portfolio</title>
+    <title>Ramachandran Kulothungan | Portfolio (Option 2)</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
             darkMode: 'class',
         };
-        // On page load or when changing themes, best to add inline in `head` to avoid FOUC
         if (localStorage.getItem('darkMode') === 'true' || (!('darkMode' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
             document.documentElement.classList.add('dark');
         } else {
@@ -20,7 +19,6 @@
 <nav class="bg-white dark:bg-gray-800 shadow-sm border-b border-gray-100 dark:border-gray-700 sticky top-0 z-50 transition-colors duration-200">
     <div class="container mx-auto px-6 py-4">
         <div class="flex justify-between items-center">
-            <!-- Name and Icons -->
             <div class="flex items-center gap-4">
                 <a href="index.html" class="text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent hover:from-blue-700 hover:to-purple-700 transition-all duration-300">
                     Ramachandran Kulothungan
@@ -52,14 +50,12 @@
                 </div>
             </div>
 
-            <!-- Navigation Links -->
             <div class="hidden md:flex items-center gap-1">
                 <a href="projects.html" class="px-4 py-2 rounded-lg text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-blue-50 dark:hover:bg-gray-700 font-medium transition-all duration-200">Projects</a>
                 <a href="resume.pdf" target="_blank" class="px-4 py-2 rounded-lg text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-blue-50 dark:hover:bg-gray-700 font-medium transition-all duration-200">Resume</a>
                 <a href="now.html" class="px-4 py-2 rounded-lg text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-blue-50 dark:hover:bg-gray-700 font-medium transition-all duration-200">Now</a>
             </div>
 
-            <!-- Mobile Menu Button -->
             <button class="md:hidden p-2 rounded-lg text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors" id="mobile-menu-button" aria-label="Menu">
                 <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
@@ -67,7 +63,6 @@
             </button>
         </div>
 
-        <!-- Mobile Menu -->
         <div class="hidden md:hidden mt-4 pb-2" id="mobile-menu">
             <div class="flex flex-col gap-2">
                 <a href="projects.html" class="px-4 py-2 rounded-lg text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-blue-50 dark:hover:bg-gray-700 font-medium transition-all duration-200">Projects</a>
@@ -80,17 +75,13 @@
 
 <script>
     document.addEventListener('DOMContentLoaded', function() {
-        // Mobile menu toggle
         const mobileMenuButton = document.getElementById('mobile-menu-button');
         const mobileMenu = document.getElementById('mobile-menu');
-        
         if (mobileMenuButton && mobileMenu) {
             mobileMenuButton.addEventListener('click', function() {
                 mobileMenu.classList.toggle('hidden');
             });
         }
-
-        // Dark mode toggle
         const darkModeToggle = document.getElementById('dark-mode-toggle');
         if (darkModeToggle) {
             darkModeToggle.addEventListener('click', function() {
@@ -101,104 +92,112 @@
     });
 </script>
 
-    <div class="container mx-auto px-6 py-8">
-        <!-- Header Section - Compact -->
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+    <div class="container mx-auto px-6 py-12">
+        <!-- Option 2: Modern Card (Squircle) -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 mb-12 items-center">
             <!-- Left: Intro -->
-            <div class="md:col-span-2">
-                <h1 class="text-4xl font-bold mb-3 dark:text-white">Hey, I am Ramachandran</h1>
-                <p class="text-gray-700 dark:text-gray-300 mb-3">Upcoming Software Engineer at Nokia. Specialized in Backend Systems and Agentic AI Development, with a strong foundation in DevOps and Test Automation. Recently graduated with a Master's in Computer Science from University at Buffalo (AI/ML track).</p>
-                <div class="flex gap-3 mt-4">
-                    <a href="projects.html" class="bg-blue-500 dark:bg-blue-600 text-white px-5 py-2 rounded-lg shadow-md hover:bg-blue-600 dark:hover:bg-blue-700 transition-colors text-sm">View My Work</a>
-                    <a href="resume.pdf" target="_blank" class="border-2 border-blue-500 dark:border-blue-400 text-blue-500 dark:text-blue-400 px-5 py-2 rounded-lg hover:bg-blue-50 dark:hover:bg-blue-900/30 transition-colors text-sm">View Resume</a>
+            <div class="order-2 md:order-1">
+                <h1 class="text-4xl md:text-5xl font-bold mb-4 dark:text-white leading-tight">Hey, I am <br><span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">Ramachandran</span></h1>
+                <p class="text-lg text-gray-700 dark:text-gray-300 mb-6 leading-relaxed">Upcoming Software Engineer at Nokia. Specialized in Backend Systems and Agentic AI Development, with a strong foundation in DevOps and Test Automation. Recently graduated with a Master's in Computer Science from University at Buffalo (AI/ML track).</p>
+                <div class="flex gap-4">
+                    <a href="projects.html" class="bg-gray-900 dark:bg-white text-white dark:text-gray-900 px-6 py-3 rounded-xl shadow-lg hover:translate-y-[-2px] transition-all font-semibold">View My Work</a>
+                    <a href="resume.pdf" target="_blank" class="border-2 border-gray-200 dark:border-gray-700 text-gray-700 dark:text-gray-300 px-6 py-3 rounded-xl hover:border-gray-900 dark:hover:border-white transition-colors font-semibold">View Resume</a>
                 </div>
             </div>
             <!-- Right: Image -->
-            <div class="flex justify-center md:justify-end">
-                <img src="/static/me.png" alt="Ramachandran Kulothungan" class="rounded-full w-40 h-40 shadow-lg object-cover">
+            <div class="flex justify-center md:justify-end order-1 md:order-2 relative group">
+                <div class="absolute inset-0 bg-gradient-to-tr from-blue-500 to-purple-500 rounded-[2rem] blur-2xl opacity-20 group-hover:opacity-30 transition-opacity duration-500 -z-10 transform rotate-6 scale-95"></div>
+                <img src="/static/me.png" alt="Ramachandran Kulothungan" class="rounded-[2.5rem] w-80 h-80 md:w-96 md:h-96 shadow-2xl object-cover transform transition-transform duration-500 group-hover:scale-[1.02]">
             </div>
         </div>
 
         <!-- Work Experience Section -->
-        <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6 mb-6 border border-gray-100 dark:border-gray-700 transition-colors duration-200">
-            <h2 class="text-2xl font-bold mb-4 dark:text-white">Work Experience</h2>
-            <div class="space-y-6">
+        <div class="bg-gray-50 dark:bg-gray-800/50 rounded-3xl p-8 mb-8">
+            <h2 class="text-3xl font-bold mb-8 dark:text-white flex items-center gap-3">
+                <span class="w-2 h-8 bg-blue-500 rounded-full inline-block"></span>
+                Work Experience
+            </h2>
+            <div class="space-y-8">
                 <!-- Current Role -->
-                <div class="border-l-4 border-blue-500 pl-4">
-                    <div class="flex justify-between items-start mb-2">
+                <div class="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-md hover:shadow-lg transition-shadow">
+                    <div class="flex flex-col md:flex-row md:justify-between md:items-center mb-4">
                         <div>
-                            <h3 class="font-bold text-lg dark:text-white">Software Dev Cloud Intern</h3>
+                            <h3 class="font-bold text-xl dark:text-white">Software Dev Cloud Intern</h3>
                             <p class="text-blue-600 dark:text-blue-400 font-medium">Nokia Bell Labs</p>
                         </div>
-                        <span class="text-xs text-gray-500 dark:text-gray-400 bg-blue-50 dark:bg-blue-900/30 px-2 py-1 rounded">Current</span>
+                        <span class="text-sm font-medium text-green-700 dark:text-green-300 bg-green-100 dark:bg-green-900/40 px-4 py-1.5 rounded-full border border-green-200 dark:border-green-800 w-fit mt-2 md:mt-0">Current</span>
                     </div>
-                    <ul class="text-sm text-gray-700 dark:text-gray-300 space-y-1 mt-2">
-                        <li>• Built cloud-native lifecycle automation for Nokia CMM across Kubernetes environments (NCS, OpenShift) using NCOM, enabling reliable deployment, scaling, and upgrade workflows.</li>
-                        <li>• Developed an extensible Python library exposing 30+ standardized API and logging abstractions, enabling programmatic integration across automation and orchestration workflows using Jenkins.</li>
-                        <li>• Automated CMM re-installation workflows for T-Mobile (TMO) using Python and NCOM+ tooling, to reduce manual re-installation time from ~9 hours.</li>
+                    <ul class="text-gray-700 dark:text-gray-300 space-y-2 leading-relaxed list-disc list-outside ml-4">
+                        <li>Built cloud-native lifecycle automation for Nokia CMM across Kubernetes environments (NCS, OpenShift) using NCOM, enabling reliable deployment, scaling, and upgrade workflows.</li>
+                        <li>Developed an extensible Python library exposing 30+ standardized API and logging abstractions, enabling programmatic integration across automation and orchestration workflows using Jenkins.</li>
+                        <li>Automated CMM re-installation workflows for T-Mobile (TMO) using Python and NCOM+ tooling, to reduce manual re-installation time from ~9 hours.</li>
                     </ul>
                 </div>
                 <!-- Previous Role -->
-                <div class="border-l-4 border-gray-300 dark:border-gray-600 pl-4">
-                    <div class="mb-2">
-                        <h3 class="font-bold text-lg dark:text-white">Software Engineer</h3>
+                <div class="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-md hover:shadow-lg transition-shadow opacity-90 hover:opacity-100">
+                    <div class="mb-4">
+                        <h3 class="font-bold text-xl dark:text-white">Software Engineer</h3>
                         <p class="text-blue-600 dark:text-blue-400 font-medium">Dassault Systèmes</p>
                     </div>
-                    <ul class="text-sm text-gray-700 dark:text-gray-300 space-y-1 mt-2">
-                        <li>• Built a scalable Python-based internal automation framework adopted by 40+ teams to orchestrate UI and API-driven workflows and CI/CD execution using goCD and Github Actions, significantly reducing manual operational effort.</li>
-                        <li>• Led a platform decentralization initiative by modularizing shared libraries, defining versioned packaging patterns, and automating artifact publishing to Artifactory using GitHub Actions, enabling team-owned repositories and independent releases.</li>
-                        <li>• Worked on cloud infrastructure migration and optimization on AWS, designing reusable Terraform modules and rightsizing EC2 resources to achieve ~60% cost reduction and faster environment provisioning.</li>
-                        <li>• Engineered and deployed an internal developer productivity tool to index and search library keywords across 10+ repositories, improving discoverability and onboarding efficiency.</li>
-                        <li>• Implemented centralized observability and analytics using structured logging and Sumo Logic dashboards to provide real-time visibility into test pipeline health for 30+ teams.</li>
-                        <li>• Led data validation for a production AWS DMS migration (MySQL → PostgreSQL) by building automated Ruby/SQL integrity checks, ensuring data correctness and reducing manual validation effort by ~90%.</li>
+                    <ul class="text-gray-700 dark:text-gray-300 space-y-2 leading-relaxed list-disc list-outside ml-4">
+                        <li>Built a scalable Python-based internal automation framework adopted by 40+ teams to orchestrate UI and API-driven workflows and CI/CD execution using goCD and Github Actions, significantly reducing manual operational effort.</li>
+                        <li>Led a platform decentralization initiative by modularizing shared libraries, defining versioned packaging patterns, and automating artifact publishing to Artifactory using GitHub Actions, enabling team-owned repositories and independent releases.</li>
+                        <li>Worked on cloud infrastructure migration and optimization on AWS, designing reusable Terraform modules and rightsizing EC2 resources to achieve ~60% cost reduction and faster environment provisioning.</li>
+                        <li>Engineered and deployed an internal developer productivity tool to index and search library keywords across 10+ repositories, improving discoverability and onboarding efficiency.</li>
+                        <li>Implemented centralized observability and analytics using structured logging and Sumo Logic dashboards to provide real-time visibility into test pipeline health for 30+ teams.</li>
+                        <li>Led data validation for a production AWS DMS migration (MySQL → PostgreSQL) by building automated Ruby/SQL integrity checks, ensuring data correctness and reducing manual validation effort by ~90%.</li>
                     </ul>
                 </div>
             </div>
         </div>
 
-        <!-- Skills Section - Compact -->
-        <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6 border border-gray-100 dark:border-gray-700 transition-colors duration-200">
-            <h2 class="text-2xl font-bold mb-4 dark:text-white">Core Skills</h2>
+        <!-- Skills Section -->
+        <div>
+            <h2 class="text-3xl font-bold mb-8 dark:text-white flex items-center gap-3">
+                <span class="w-2 h-8 bg-purple-500 rounded-full inline-block"></span>
+                Core Skills
+            </h2>
             <div class="grid grid-cols-2 md:grid-cols-5 gap-4">
-                <div class="bg-gray-50 dark:bg-gray-700 rounded-lg p-4 hover:bg-gray-100 dark:hover:bg-gray-600 transition-colors text-center">
-                    <img src="static/logos/python.png" alt="Python" class="w-12 h-12 mx-auto mb-2">
-                    <p class="font-semibold text-gray-800 dark:text-gray-200 text-sm">Python</p>
+                <div class="bg-white dark:bg-gray-800 rounded-2xl p-6 border border-gray-100 dark:border-gray-700 shadow-sm hover:shadow-xl transition-all hover:-translate-y-1 duration-300 text-center">
+                    <img src="static/logos/python.png" alt="Python" class="w-12 h-12 mx-auto mb-3">
+                    <p class="font-bold text-gray-800 dark:text-gray-200">Python</p>
                 </div>
-                <div class="bg-gray-50 dark:bg-gray-700 rounded-lg p-4 hover:bg-gray-100 dark:hover:bg-gray-600 transition-colors text-center">
-                    <img src="static/logos/ts.png" alt="TypeScript" class="w-12 h-12 mx-auto mb-2">
-                    <p class="font-semibold text-gray-800 dark:text-gray-200 text-sm">TypeScript</p>
+                <!-- ... -->
+                <div class="bg-white dark:bg-gray-800 rounded-2xl p-6 border border-gray-100 dark:border-gray-700 shadow-sm hover:shadow-xl transition-all hover:-translate-y-1 duration-300 text-center">
+                    <img src="static/logos/ts.png" alt="TypeScript" class="w-12 h-12 mx-auto mb-3">
+                    <p class="font-bold text-gray-800 dark:text-gray-200">TypeScript</p>
                 </div>
-                <div class="bg-gray-50 dark:bg-gray-700 rounded-lg p-4 hover:bg-gray-100 dark:hover:bg-gray-600 transition-colors text-center">
-                    <img src="static/logos/fastapi.png" alt="FastAPI" class="w-12 h-12 mx-auto mb-2">
-                    <p class="font-semibold text-gray-800 dark:text-gray-200 text-sm">FastAPI</p>
+                <div class="bg-white dark:bg-gray-800 rounded-2xl p-6 border border-gray-100 dark:border-gray-700 shadow-sm hover:shadow-xl transition-all hover:-translate-y-1 duration-300 text-center">
+                    <img src="static/logos/fastapi.png" alt="FastAPI" class="w-12 h-12 mx-auto mb-3">
+                    <p class="font-bold text-gray-800 dark:text-gray-200">FastAPI</p>
                 </div>
-                <div class="bg-gray-50 dark:bg-gray-700 rounded-lg p-4 hover:bg-gray-100 dark:hover:bg-gray-600 transition-colors text-center">
-                    <img src="static/logos/nextjs.png" alt="Next.js" class="w-12 h-12 mx-auto mb-2">
-                    <p class="font-semibold text-gray-800 dark:text-gray-200 text-sm">Next.js</p>
+                <div class="bg-white dark:bg-gray-800 rounded-2xl p-6 border border-gray-100 dark:border-gray-700 shadow-sm hover:shadow-xl transition-all hover:-translate-y-1 duration-300 text-center">
+                    <img src="static/logos/nextjs.png" alt="Next.js" class="w-12 h-12 mx-auto mb-3">
+                    <p class="font-bold text-gray-800 dark:text-gray-200">Next.js</p>
                 </div>
-                <div class="bg-gray-50 dark:bg-gray-700 rounded-lg p-4 hover:bg-gray-100 dark:hover:bg-gray-600 transition-colors text-center">
-                    <img src="static/logos/docker.png" alt="Docker" class="w-12 h-12 mx-auto mb-2">
-                    <p class="font-semibold text-gray-800 dark:text-gray-200 text-sm">Docker</p>
+                <div class="bg-white dark:bg-gray-800 rounded-2xl p-6 border border-gray-100 dark:border-gray-700 shadow-sm hover:shadow-xl transition-all hover:-translate-y-1 duration-300 text-center">
+                    <img src="static/logos/docker.png" alt="Docker" class="w-12 h-12 mx-auto mb-3">
+                    <p class="font-bold text-gray-800 dark:text-gray-200">Docker</p>
                 </div>
-                <div class="bg-gray-50 dark:bg-gray-700 rounded-lg p-4 hover:bg-gray-100 dark:hover:bg-gray-600 transition-colors text-center">
-                    <img src="static/logos/k8s.png" alt="Kubernetes" class="w-12 h-12 mx-auto mb-2">
-                    <p class="font-semibold text-gray-800 dark:text-gray-200 text-sm">Kubernetes</p>
+                <div class="bg-white dark:bg-gray-800 rounded-2xl p-6 border border-gray-100 dark:border-gray-700 shadow-sm hover:shadow-xl transition-all hover:-translate-y-1 duration-300 text-center">
+                    <img src="static/logos/k8s.png" alt="Kubernetes" class="w-12 h-12 mx-auto mb-3">
+                    <p class="font-bold text-gray-800 dark:text-gray-200">Kubernetes</p>
                 </div>
-                <div class="bg-gray-50 dark:bg-gray-700 rounded-lg p-4 hover:bg-gray-100 dark:hover:bg-gray-600 transition-colors text-center">
-                    <img src="static/logos/pytorch.png" alt="PyTorch" class="w-12 h-12 mx-auto mb-2">
-                    <p class="font-semibold text-gray-800 dark:text-gray-200 text-sm">PyTorch</p>
+                <div class="bg-white dark:bg-gray-800 rounded-2xl p-6 border border-gray-100 dark:border-gray-700 shadow-sm hover:shadow-xl transition-all hover:-translate-y-1 duration-300 text-center">
+                    <img src="static/logos/pytorch.png" alt="PyTorch" class="w-12 h-12 mx-auto mb-3">
+                    <p class="font-bold text-gray-800 dark:text-gray-200">PyTorch</p>
                 </div>
-                <div class="bg-gray-50 dark:bg-gray-700 rounded-lg p-4 hover:bg-gray-100 dark:hover:bg-gray-600 transition-colors text-center">
-                    <img src="static/logos/sklearn.png" alt="Scikit-learn" class="w-12 h-12 mx-auto mb-2">
-                    <p class="font-semibold text-gray-800 dark:text-gray-200 text-sm">Scikit-learn</p>
+                <div class="bg-white dark:bg-gray-800 rounded-2xl p-6 border border-gray-100 dark:border-gray-700 shadow-sm hover:shadow-xl transition-all hover:-translate-y-1 duration-300 text-center">
+                    <img src="static/logos/sklearn.png" alt="Scikit-learn" class="w-12 h-12 mx-auto mb-3">
+                    <p class="font-bold text-gray-800 dark:text-gray-200">Scikit-learn</p>
                 </div>
-                <div class="bg-gray-50 dark:bg-gray-700 rounded-lg p-4 hover:bg-gray-100 dark:hover:bg-gray-600 transition-colors text-center">
-                    <img src="static/logos/tf.png" alt="Terraform" class="w-12 h-12 mx-auto mb-2">
-                    <p class="font-semibold text-gray-800 dark:text-gray-200 text-sm">Terraform</p>
+                <div class="bg-white dark:bg-gray-800 rounded-2xl p-6 border border-gray-100 dark:border-gray-700 shadow-sm hover:shadow-xl transition-all hover:-translate-y-1 duration-300 text-center">
+                    <img src="static/logos/tf.png" alt="Terraform" class="w-12 h-12 mx-auto mb-3">
+                    <p class="font-bold text-gray-800 dark:text-gray-200">Terraform</p>
                 </div>
-                <div class="bg-gray-50 dark:bg-gray-700 rounded-lg p-4 hover:bg-gray-100 dark:hover:bg-gray-600 transition-colors text-center">
-                    <img src="static/logos/gha.png" alt="GitHub Actions" class="w-12 h-12 mx-auto mb-2">
-                    <p class="font-semibold text-gray-800 dark:text-gray-200 text-sm">GitHub Actions</p>
+                <div class="bg-white dark:bg-gray-800 rounded-2xl p-6 border border-gray-100 dark:border-gray-700 shadow-sm hover:shadow-xl transition-all hover:-translate-y-1 duration-300 text-center">
+                    <img src="static/logos/gha.png" alt="GitHub Actions" class="w-12 h-12 mx-auto mb-3">
+                    <p class="font-bold text-gray-800 dark:text-gray-200">GitHub Actions</p>
                 </div>
             </div>
         </div>

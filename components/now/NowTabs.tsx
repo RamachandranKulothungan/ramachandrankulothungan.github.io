@@ -4,211 +4,123 @@ import { useState } from "react";
 import { Briefcase, Dumbbell, Tv } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { motion, AnimatePresence } from "framer-motion";
+import { data } from "@/config/data";
 
-const tabs = [
-  { id: "work", label: "Work", icon: Briefcase, color: "text-blue-500" },
-  { id: "fitness", label: "Fitness", icon: Dumbbell, color: "text-green-500" },
-  { id: "anime", label: "Anime", icon: Tv, color: "text-purple-500" },
-];
+const iconMap = {
+  Briefcase,
+  Dumbbell,
+  Tv,
+} as const;
+
+type TabId = typeof data.now.tabs[number]["id"];
 
 export function NowTabs() {
-  const [activeTab, setActiveTab] = useState("work");
+  const [activeTab, setActiveTab] = useState<TabId>(data.now.tabs[0].id);
 
   return (
-    <div>
+    <div className="w-full">
       {/* Tab Navigation */}
-      <div className="flex justify-center mb-8 border-b border-gray-200 dark:border-gray-700">
-        {tabs.map((tab) => (
-          <button
-            key={tab.id}
-            onClick={() => setActiveTab(tab.id)}
-            className={cn(
-              "px-6 py-3 font-semibold transition-colors border-b-2",
-              activeTab === tab.id
-                ? `border-blue-500 dark:border-blue-400 text-blue-600 dark:text-blue-400`
-                : "border-transparent text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-gray-100"
-            )}
-          >
-            {tab.label}
-          </button>
-        ))}
+      <div 
+        role="tablist" 
+        className="flex justify-start mb-8 border-b border-gray-200 dark:border-gray-700 w-full overflow-x-auto"
+        aria-label="Filter activities"
+      >
+        {data.now.tabs.map((tab) => {
+          const Icon = iconMap[tab.icon as keyof typeof iconMap];
+          const isActive = activeTab === tab.id;
+          
+          return (
+            <button
+              key={tab.id}
+              role="tab"
+              aria-selected={isActive}
+              aria-controls={`panel-${tab.id}`}
+              id={`tab-${tab.id}`}
+              onClick={() => setActiveTab(tab.id)}
+              className={cn(
+                "px-6 py-3 font-semibold transition-all border-b-2 flex items-center gap-2 whitespace-nowrap outline-none focus-visible:ring-2 focus-visible:ring-blue-500/50 rounded-t-sm",
+                isActive
+                  ? `border-blue-500 dark:border-blue-400 text-gray-900 dark:text-gray-100` // Removed the colored text for active state as per "calm" critique, just simple active state
+                  : "border-transparent text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200"
+              )}
+            >
+              <Icon className={cn("w-4 h-4", isActive ? "text-blue-500" : "text-gray-400")} />
+              {tab.label}
+            </button>
+          );
+        })}
       </div>
 
       {/* Content */}
       <div className="min-h-[400px]">
         <AnimatePresence mode="wait">
-          {activeTab === "work" && (
-            <motion.div
-              key="work"
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -10 }}
-              transition={{ duration: 0.2 }}
-            >
-              <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-8 border border-gray-100 dark:border-gray-700 transition-colors duration-200">
-                <h2 className="text-2xl font-bold mb-6 flex items-center text-gray-900 dark:text-white">
-                  <Briefcase className="w-6 h-6 mr-3 text-blue-500" />
-                  Work
-                </h2>
-                <div className="mb-6">
-                  <h3 className="text-lg font-semibold text-gray-700 dark:text-gray-300 mb-4">
-                    Currently
-                  </h3>
-                  <ul className="space-y-3">
-                    {[
-                      "Learning C++ for microservices development and networking technologies",
-                      "Applying for full time roles in software development",
-                      "Exploring agentic systems with langgraph",
-                    ].map((item, i) => (
-                      <li key={i} className="flex items-start group">
-                        <span className="text-blue-500 dark:text-blue-400 mr-3 mt-1">
-                          •
-                        </span>
-                        <span className="text-gray-700 dark:text-gray-300 group-hover:text-gray-900 dark:group-hover:text-gray-100 transition-colors">
-                          {item}
-                        </span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-                <div>
-                  <h3 className="text-lg font-semibold text-gray-700 dark:text-gray-300 mb-4">
-                    Completed
-                  </h3>
-                  <div className="space-y-2">
-                    {[
-                      "Working at TBPL lab at UB on a research project to improve resolution in OCT images",
-                      "Preparing with k8s and robot framework for my internship",
-                      "DDIM-based Inpainting Model on MNIST Dataset",
-                      "Lighthouse Free Medical Clinic App (Winner of UB AI Hackathon)",
-                      "Anime Recommendation System",
-                      "Doodle Recognition Web App",
-                      "Sorting Algorithm Visualizer",
-                      "Deep learning mini projects with fine tuning pre trained LLMs",
-                      "Deep learning mini projects with Autoencoders",
-                      "PintOS Alarm Clock, MLFQS implementation",
-                      "Deep learning mini projects with LSTMs and RNNs",
-                      "CNN mini projects for image classification",
-                      "Applying for SDE/SDET roles for summer internships",
-                    ].map((item, i) => (
-                      <div
-                        key={i}
-                        className="line-through text-gray-400 dark:text-gray-500 text-sm"
-                      >
-                        {item}
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-          )}
-
-          {activeTab === "fitness" && (
-            <motion.div
-              key="fitness"
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -10 }}
-              transition={{ duration: 0.2 }}
-            >
-              <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-8 border border-gray-100 dark:border-gray-700 transition-colors duration-200">
-                <h2 className="text-2xl font-bold mb-6 flex items-center text-gray-900 dark:text-white">
-                  <Dumbbell className="w-6 h-6 mr-3 text-green-500" />
-                  Fitness
-                </h2>
-                <div className="mb-6">
-                  <h3 className="text-lg font-semibold text-gray-700 dark:text-gray-300 mb-4">
-                    Currently
-                  </h3>
-                  <ul className="space-y-3">
-                    {[
-                      "Training to get a sub 20 5k",
-                      "Getting better at freestyle football",
-                      "Learning to swim",
-                    ].map((item, i) => (
-                      <li key={i} className="flex items-start group">
-                        <span className="text-green-500 dark:text-green-400 mr-3 mt-1">
-                          •
-                        </span>
-                        <span className="text-gray-700 dark:text-gray-300 group-hover:text-gray-900 dark:group-hover:text-gray-100 transition-colors">
-                          {item}
-                        </span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-                <div>
-                  <h3 className="text-lg font-semibold text-gray-700 dark:text-gray-300 mb-4">
-                    Completed
-                  </h3>
-                  <div className="space-y-2">
-                    <div className="line-through text-gray-400 dark:text-gray-500 text-sm">
-                      Regular workout routine and fitness activities
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-          )}
-
-          {activeTab === "anime" && (
-            <motion.div
-              key="anime"
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -10 }}
-              transition={{ duration: 0.2 }}
-            >
-              <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-8 border border-gray-100 dark:border-gray-700 transition-colors duration-200">
-                <h2 className="text-2xl font-bold mb-6 flex items-center text-gray-900 dark:text-white">
-                  <Tv className="w-6 h-6 mr-3 text-purple-500" />
-                  Anime
-                </h2>
-                <div className="mb-6">
-                  <h3 className="text-lg font-semibold text-gray-700 dark:text-gray-300 mb-4">
-                    Currently
-                  </h3>
-                  <ul className="space-y-3">
-                    {[
-                      "One Piece",
-                      "100 Meters",
-                      "Akamoto Days",
-                      "Urek Mazino",
-                      "Hajime no Ippo",
-                    ].map((item, i) => (
-                      <li key={i} className="flex items-start group">
-                        <span className="text-purple-500 dark:text-purple-400 mr-3 mt-1">
-                          •
-                        </span>
-                        <span className="text-gray-700 dark:text-gray-300 group-hover:text-gray-900 dark:group-hover:text-gray-100 transition-colors">
-                          {item}
-                        </span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-                <div>
-                  <h3 className="text-lg font-semibold text-gray-700 dark:text-gray-300 mb-4">
-                    Completed
-                  </h3>
-                  <div className="space-y-2">
-                     {[
-                        "Ao Ashi",
-                        "Haikyuu",
-                        "Run with the Wind",
-                        "Giant Killing"
-                     ].map((item, i) => (
-                        <div key={i} className="line-through text-gray-400 dark:text-gray-500 text-sm">
-                            {item}
-                        </div>
-                     ))}
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-          )}
+          {data.now.tabs.map((tab) => {
+             if (activeTab !== tab.id) return null;
+             
+             return (
+              <motion.div
+                key={tab.id}
+                role="tabpanel"
+                id={`panel-${tab.id}`}
+                aria-labelledby={`tab-${tab.id}`}
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -10 }}
+                transition={{ duration: 0.2 }}
+                className="w-full focus:outline-none"
+                tabIndex={0}
+              >
+                <CategoryPanel tab={tab} />
+              </motion.div>
+            );
+          })}
         </AnimatePresence>
+      </div>
+    </div>
+  );
+}
+
+function CategoryPanel({ tab }: { tab: typeof data.now.tabs[number] }) {
+  const Icon = iconMap[tab.icon as keyof typeof iconMap];
+  
+  return (
+    <div className="bg-white dark:bg-gray-800/50 rounded-xl p-0 transition-colors duration-200">
+      {/* We removed the redundant header inside the card as the tab itself serves as context, 
+          but if we want to keep the icon branding we can keep a subtle header 
+          or just go straight to content for a cleaner look. 
+          The critique asked for "Information density vs scannability".
+          Removing the big redundant H2 inside the card to reduce noise, 
+          since the user already clicked the tab.
+      */}
+      
+      <div className="grid md:grid-cols-2 gap-12">
+        <div>
+          <h3 className="text-sm uppercase tracking-wide font-semibold text-gray-500 dark:text-gray-400 mb-6 flex items-center gap-2">
+            <span className="w-1.5 h-1.5 rounded-full bg-blue-500"></span>
+            Currently
+          </h3>
+          <ul className="space-y-4">
+            {tab.currently.map((item, i) => (
+              <li key={i} className="flex items-start group text-base text-gray-800 dark:text-gray-200 leading-relaxed">
+                 {item}
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div>
+           <h3 className="text-sm uppercase tracking-wide font-semibold text-gray-400 dark:text-gray-500 mb-6 flex items-center gap-2">
+            <span className="w-1.5 h-1.5 rounded-full bg-gray-300 dark:bg-gray-600"></span>
+            Completed
+          </h3>
+          <ul className="space-y-3">
+            {tab.completed.map((item, i) => (
+              <li key={i} className="text-sm text-gray-500 dark:text-gray-400 leading-relaxed">
+                 {item}
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
     </div>
   );

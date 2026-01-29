@@ -12,7 +12,7 @@
 antigravity-awesome-skills
 # testing
 /coverage
-
+.agent/
 # next.js
 /.next/
 /out/

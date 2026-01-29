@@ -13,6 +13,12 @@ const iconMap = {
 } as const;
 
 type TabId = typeof data.now.tabs[number]["id"];
+type Tab = typeof data.now.tabs[number];
+
+// Extending type definition to include description since we added it to data
+// but typescript inference might need explicit optional typing if not fully inferred yet
+// though "typeof data" should handle it if data is const asserted. 
+// Assuming data is const asserted and correctly inferred.
 
 export function NowTabs() {
   const [activeTab, setActiveTab] = useState<TabId>(data.now.tabs[0].id);
@@ -85,37 +91,27 @@ function CategoryPanel({ tab }: { tab: typeof data.now.tabs[number] }) {
   
   return (
     <div className="bg-white dark:bg-gray-800/50 rounded-xl p-0 transition-colors duration-200">
-      {/* We removed the redundant header inside the card as the tab itself serves as context, 
-          but if we want to keep the icon branding we can keep a subtle header 
-          or just go straight to content for a cleaner look. 
-          The critique asked for "Information density vs scannability".
-          Removing the big redundant H2 inside the card to reduce noise, 
-          since the user already clicked the tab.
-      */}
-      
-      <div className="grid md:grid-cols-2 gap-12">
+      <div className="flex flex-col gap-8">
+        {/* Description Section */}
+        {/* @ts-ignore - description field exists in data but type inference might lag without restart */}
+        {tab.description && (
+          <div className="mb-2">
+            <p className="text-lg text-gray-700 dark:text-gray-300 max-w-3xl leading-relaxed">
+              {/* @ts-ignore */}
+              {tab.description}
+            </p>
+          </div>
+        )}
+
+        {/* Currently List */}
         <div>
-          <h3 className="text-sm uppercase tracking-wide font-semibold text-gray-500 dark:text-gray-400 mb-6 flex items-center gap-2">
+          <h3 className="text-sm uppercase tracking-wide font-semibold text-gray-500 dark:text-gray-400 mb-4 flex items-center gap-2">
             <span className="w-1.5 h-1.5 rounded-full bg-blue-500"></span>
             Currently
           </h3>
-          <ul className="space-y-4">
+          <ul className="space-y-3">
             {tab.currently.map((item, i) => (
               <li key={i} className="flex items-start group text-base text-gray-800 dark:text-gray-200 leading-relaxed">
-                 {item}
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        <div>
-           <h3 className="text-sm uppercase tracking-wide font-semibold text-gray-400 dark:text-gray-500 mb-6 flex items-center gap-2">
-            <span className="w-1.5 h-1.5 rounded-full bg-gray-300 dark:bg-gray-600"></span>
-            Completed
-          </h3>
-          <ul className="space-y-3">
-            {tab.completed.map((item, i) => (
-              <li key={i} className="text-sm text-gray-500 dark:text-gray-400 leading-relaxed">
                  {item}
               </li>
             ))}

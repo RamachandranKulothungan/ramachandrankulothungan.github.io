@@ -165,25 +165,10 @@ export const data = {
                 icon: "Briefcase",
                 color: "text-blue-500",
                 title: "Work",
+                description: "I am actively deepening my expertise in C++ and networking protocols to drive my contributions at Nokia. For me, software engineering is not just a profession but a craft.I approach every line of code with the intent of building systems that are elegant, resilient, and enduring.",
                 currently: [
-                    "Learning C++ for microservices development and networking technologies",
-                    "Exploring agentic systems with langgraph"
-                ],
-                completed: [
-                    "Applying for full time roles in software development",
-                    "Working at TBPL lab at UB on a research project to improve resolution in OCT images",
-                    "Preparing with k8s and robot framework for my internship",
-                    "DDIM-based Inpainting Model on MNIST Dataset",
-                    "Lighthouse Free Medical Clinic App (Winner of UB AI Hackathon)",
-                    "Anime Recommendation System",
-                    "Doodle Recognition Web App",
-                    "Sorting Algorithm Visualizer",
-                    "Deep learning mini projects with fine tuning pre trained LLMs",
-                    "Deep learning mini projects with Autoencoders",
-                    "PintOS Alarm Clock, MLFQS implementation",
-                    "Deep learning mini projects with LSTMs and RNNs",
-                    "CNN mini projects for image classification",
-                    "Applying for SDE/SDET roles for summer internships"
+                    "Mastering C++ for high-performance microservices and low-latency networking",
+                    "Exploring agentic systems and orchestration with LangGraph"
                 ]
             },
             {
@@ -192,13 +177,11 @@ export const data = {
                 icon: "Dumbbell",
                 color: "text-green-500",
                 title: "Fitness",
+                description: "Football has been my anchor since childhood, but as life evolves, so must my training. I’ve transitioned to running and swimming to maintain peak conditioning while keeping football as my weekend passion. My sights are set on a sub-20 minute 5k.",
                 currently: [
-                    "Training to get a sub 20 5k",
-                    "Getting better at freestyle football",
-                    "Learning to swim"
-                ],
-                completed: [
-                    "Regular workout routine and fitness activities"
+                    "Training for a sub-20 minute 5k run",
+                    "Refining freestyle football techniques",
+                    "Learning and improving swimming endurance"
                 ]
             },
             {
@@ -207,24 +190,15 @@ export const data = {
                 icon: "Tv",
                 color: "text-purple-500",
                 title: "Anime",
+                description: "Anime is a constant source of inspiration and storytelling mastery in my life. I follow them, appreciating it not just as entertainment but as examples of world-building and narrative depth. One Piece, in particular, has been a lifelong companion.",
                 currently: [
                     "One Piece",
+                    "Kagurabachi",
                     "Sakamoto Days",
-                    "Urek Mazino",
+                    "Tower of God (Urek Mazino arc)",
                     "Hajime no Ippo",
                     "Chainsaw Man",
-                    "Kagurabachi"
-                ],
-                completed: [
-                    "Ao Ashi",
-                    "Haikyuu",
-                    "Run with the Wind",
-                    "Giant Killing",
-                    "Bleach",
-                    "Naruto",
-                    "One Punch Man",
-                    "Attack on Titan",
-                    "100 Meters",
+                    "Jujutsu Kaisen",
                 ]
             }
         ]

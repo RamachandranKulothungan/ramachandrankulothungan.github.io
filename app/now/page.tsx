@@ -8,10 +8,10 @@ export default function NowPage() {
       <div className="max-w-4xl mx-auto">
         {/* Header */}
         <div className="text-left mb-12">
-          <h1 className="text-5xl font-bold mb-4 text-gray-900 dark:text-gray-100">
+          <h1 className="text-5xl font-bold mb-4 text-foreground">
             What I'm doing now
           </h1>
-          <p className="text-gray-600 dark:text-gray-400">
+          <p className="text-muted-foreground">
             Last updated: {data.now.lastUpdated}
           </p>
         </div>

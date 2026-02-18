@@ -19,7 +19,7 @@ export function Navbar() {
   }, []);
 
   const navLinks = [
-    { href: "/projects", label: "Projects" },
+    { href: "/#projects", label: "Projects" },
     { href: "/resume.pdf", label: "Resume", external: true },
     { href: "/now", label: "Now" },
   ];
@@ -34,7 +34,7 @@ export function Navbar() {
           <div className="flex items-center gap-4">
             <Link
               href="/"
-              className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent hover:from-blue-700 hover:to-purple-700 transition-all duration-300"
+              className="text-2xl font-bold text-foreground hover:opacity-80 transition-opacity duration-200"
             >
               Ramachandran Kulothungan
             </Link>

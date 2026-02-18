@@ -101,7 +101,7 @@ export const data = {
             title: "Lighthouse Free Medical Clinic App",
             description:
                 "Developed a web application to provide optimal insurance recommendations for uninsured patients. Utilized OpenAI models, Next.js, and FastAPI to streamline decision-making for medical professionals.",
-            award: "🏆 Winner of UB AI Hackathon",
+            award: "Winner of UB AI Hackathon 2024",
             tags: [
                 { name: "Next.js", color: "bg-blue-50 text-blue-700" },
                 { name: "FastAPI", color: "bg-green-50 text-green-700" },

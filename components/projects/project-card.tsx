@@ -23,18 +23,14 @@ export function ProjectCard({ project }: ProjectCardProps) {
     <div className="group relative flex flex-col h-full bg-card dark:bg-card/40 backdrop-blur-sm rounded-2xl border border-border/50 hover:border-primary/50 transition-all duration-300 hover:shadow-xl hover:shadow-primary/5 hover:-translate-y-1 overflow-hidden">
       
       {/* Premium Glow Effect on Hover */}
-      <div className="absolute inset-0 bg-gradient-to-br from-blue-500/0 via-purple-500/0 to-pink-500/0 opacity-0 group-hover:opacity-10 transition-opacity duration-500 pointer-events-none" />
+      {/* Gradient removed for cleaner aesthetic */}
 
       <div className="p-6 md:p-8 flex flex-col h-full relative z-10">
         <div className="flex items-start justify-between mb-4">
           <h3 className="text-2xl font-bold text-foreground group-hover:text-primary transition-colors line-clamp-2">
             {project.title}
           </h3>
-          {project.award && (
-            <span className="bg-yellow-100 dark:bg-yellow-900/30 text-yellow-800 dark:text-yellow-300 text-xs font-semibold px-3 py-1 rounded-full shrink-0 ml-2 animate-pulse-slow">
-               Award
-            </span>
-          )}
+  
         </div>
 
         <p className="text-muted-foreground mb-6 leading-relaxed grow">

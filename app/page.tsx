@@ -25,7 +25,7 @@ export default function Home() {
           </p>
           <div className="flex gap-4">
             <Button asChild size="lg" className="rounded-xl shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
-              <Link href="/projects">
+              <Link href="#projects">
                 View My Work
               </Link>
             </Button>

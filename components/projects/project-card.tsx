@@ -20,7 +20,7 @@ const IconMap = {
 
 export function ProjectCard({ project }: ProjectCardProps) {
   return (
-    <div className="group relative flex flex-col h-full bg-card dark:bg-card/40 backdrop-blur-sm rounded-2xl border border-border/50 hover:border-primary/50 transition-all duration-300 hover:shadow-xl hover:shadow-primary/5 hover:-translate-y-1 overflow-hidden">
+    <div className="group relative flex flex-col h-full bg-card dark:bg-card/40 backdrop-blur-sm rounded-2xl transition-all duration-300 hover:shadow-xl hover:shadow-primary/5 hover:-translate-y-1 overflow-hidden">
       
       {/* Premium Glow Effect on Hover */}
       {/* Gradient removed for cleaner aesthetic */}
@@ -60,7 +60,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
         </div>
 
         {/* Actions */}
-        <div className="flex gap-3 mt-auto pt-4 border-t border-border/50">
+        <div className="flex gap-3 mt-auto pt-4">
           {project.links.map((link) => {
             const Icon = IconMap[link.icon as keyof typeof IconMap] || ExternalLink;
             return (

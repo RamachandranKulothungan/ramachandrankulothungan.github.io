@@ -52,7 +52,6 @@ export default function Home() {
 
       {/* Work Experience Section */}
       <div className="max-w-4xl mx-auto mb-20">
-        <div className="bg-card dark:bg-card/40 backdrop-blur-sm rounded-3xl p-4 md:p-10 border border-border/50 shadow-sm">
           <h2 className="text-3xl font-bold mb-10 text-foreground flex items-center gap-4">
              Work Experience
           </h2>
@@ -62,7 +61,6 @@ export default function Home() {
                 key={index}
                 className="group relative pl-4 md:pl-0"
               >
-                <div className="bg-card hover:bg-secondary/30 p-6 rounded-xl border border-border/50 transition-colors duration-200">
                   <div className="flex flex-col md:flex-row md:justify-between md:items-baseline mb-4 gap-2">
                     <div>
                       <h3 className="font-bold text-xl text-foreground">
@@ -81,33 +79,27 @@ export default function Home() {
                        <li key={i} className="pl-1">{item}</li>
                     ))}
                   </ul>
-                </div>
               </div>
             ))}
           </div>
-        </div>
       </div>
 
       {/* Skills Section */}
       <div className="max-w-6xl mx-auto mb-20 text-center">
-        <div className="bg-card dark:bg-card/40 backdrop-blur-sm rounded-3xl p-4 md:p-10 border border-border/50 shadow-sm">
           <h2 className="text-3xl font-bold mb-12 text-foreground inline-flex items-center gap-4 justify-center">
             Core Skills
           </h2>
           
           <div className="relative">
-            {/* Background decoration removed */}
             <Skills3D />
             <p className="text-sm text-muted-foreground mt-4 opacity-0 animate-fade-in delay-1000">
               Interactive 3D View • Drag to Rotate
             </p>
           </div>
-        </div>
       </div>
 
       {/* Projects Section */}
       <div id="projects" className="max-w-6xl mx-auto mb-20 scroll-mt-24">
-        <div className="bg-card dark:bg-card/40 backdrop-blur-sm rounded-3xl p-4 md:p-10 border border-border/50 shadow-sm">
           <h2 className="text-3xl font-bold mb-12 text-foreground inline-flex items-center gap-4 justify-center w-full">
             Featured Projects
           </h2>
@@ -116,7 +108,6 @@ export default function Home() {
               <ProjectCard key={index} project={project} />
             ))}
           </div>
-        </div>
       </div>
     </div>
   );
